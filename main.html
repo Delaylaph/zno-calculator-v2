@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>vntu calculator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/main.js" defer></script>
+    <link rel="stylesheet" href="css/reset.css" type="text/css">
+    <link rel="stylesheet" href="css/normalize.css" type="text/css">
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+  </head>
+  <body>
+    <div id="app">
+      <calculator-modal v-if="show_calculator_modal === true" @close-calculator-modal="show_calculator_modal = !show_calculator_modal" :checked_row="checked_row"></calculator-modal>
+      <header class="main-header">
+          <h1>Перелік конкурсних предметів у сертифікаті Українського центру оцінювання якості освіти</h1>
+      </header>
+      <div class="search">
+          <input type="text" v-model="filter_specialty" placeholder="Пошук спеціальності">
+          <div class="article-search-icon"></div>
+      </div>
+      <section class="block">
+          <div class="table-wrapper">
+            <div class="header-table">
+                <div class="column-wrapper column-name-and-code">
+                    <div class="unifying-header">Спеціальності ступеня бакалавра</div>
+                    <div class="row">
+                        <div>Назва</div>
+                        <div>Код</div>
+                    </div>
+                </div>
+                <div class="merged-row-header">
+                  <div class="column-wrapper column-list-of-competitive-subjects">
+                    <div class="unifying-header">Перелік конкурсних предметів (вступних екзаменів)</div>
+                    <div class="row">
+                        <div class="subjects-header">для відкритих (бюджетних) конкурсних пропозицій
+                        (навчання за кошти державного бюджету або за
+                        контрактом)
+                        </div>
+                        <div class="subjects-header">для небюджетних конкурсних пропозицій
+                        (навчання виключно за контрактом)
+                        </div>
+                    </div>
+                </div>
+                <div class="column-wrapper column-minimum-number-of-points">Мінімальна
+                                            кількість балів
+                                            для допуску до
+                                            участі в
+                                            конкурсі
+                </div>
+                <div class="column-wrapper column-competitive-items">Вагові
+                                            коефіцієнти
+                                            (%)
+                                            конкурсних
+                                            предметів
+                </div>
+                </div>
+                <div class="column-wrapper column-certificate">Ваговий
+                                            коефіцієнт
+                                            атестату
+                                            (%)
+                </div>
+                <div class="column-wrapper column-preparatory-courses">Ваговий
+                                            коефіцієнт
+                                            за успішне
+                                            закінчення
+                                            підготовчих
+                                            курсів
+                                            ВНТУ (%)
+                </div>
+                <div class="column-wrapper column-result">Результат</div>
+            </div>
+            <div class="table">
+
+               <div class="row-wrapper" v-for="row in filteredTable" @click="setValues(row)">
+                  <div class="row column-name-and-code">
+                          <div class="specialty">{{row.specialty}}</div>
+                          <div class="specialty-code">{{row.code}}</div>
+                  </div>
+                  <div class="merged-row-of-items">
+                        <div class="merged-row-of-item" v-for="merged_column in row.merged_columns">
+                            <div class="subjects column-list-of-competitive-subjects">
+                                <div class="subject">{{merged_column.budget_subject}}</div>
+                                <div class="subject">{{merged_column.non_budgetary_subject}}</div>
+                            </div>
+                            <div class="column-minimum-number-of-points column-wrapper">{{merged_column.minimum_number_of_points}}</div>
+                            <div class="column-competitive-items column-wrapper">{{merged_column.weight_factor_of_subjects}}</div>
+                        </div>
+                  </div>
+                  <div class="column-wrapper column-certificate">
+                      <div>{{row.weight_factor_of_certificate}}</div>
+                  </div>
+                  <div class="column-wrapper column-preparatory-courses">
+                      <div>{{row.weight_factor_of_courses}}</div>
+                  </div>
+                  <div class="column-wrapper column-result">
+                    <div v-if="result[row.code] !== null">
+                        <span  class="result-point">{{result[row.code]}}</span>
+                        <button type="button" class="btn-recalculate">Перерахувати</button>
+                    </div>
+                    <button v-else type="button" class="calculate-button">Розрахувати</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+      </section>
+      <footer>
+          <span>copyright ©</span>
+          <span>Виконав студент групи 1ci-16б <span class="mail">Смірнов Максим</span></span>
+      </footer>
+      <div class="use-cookie" v-if="show_cookie === true">
+        <span>Цей сайт використовує cookie для зберігання даних. Продовжуючи використовувати сайт, Ви даєте свою згоду на роботу з цими файлами.</span>
+        <button class="btn" @click="confirmUsingCookie()">OK</button>
+      </div>
+    </div>
+  </body>
+</html>
