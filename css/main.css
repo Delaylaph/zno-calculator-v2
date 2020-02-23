@@ -817,9 +817,6 @@ footer {
 	.zno-subjects-title {
 		min-height: 26px;
 	}
-	.calculate-the-average-score {
-		min-height: 250px;
-	}
 	.points {
 		max-height: 220px;
     	overflow-y: auto;
