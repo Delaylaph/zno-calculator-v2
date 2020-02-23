@@ -1,3 +1,13 @@
+var userAgent = navigator.userAgent.toLowerCase();
+
+var Mozila = /firefox/.test(userAgent);
+var Chrome = /chrome/.test(userAgent);
+var Safari = /safari/.test(userAgent);
+var Opera  = /opera/.test(userAgent);
+if((/mozilla/.test(userAgent) && !/firefox/.test(userAgent) && !/chrome/.test(userAgent) && !/safari/.test(userAgent) && !/opera/.test(userAgent)) || /msie/.test(userAgent)){
+    alert('Ваш браузер застарів. Будь ласка обновіть його версію, або використайте інший.');
+}
+
 
 var CalculatorModal = {
   props: ['checked_row'],
@@ -225,6 +235,8 @@ var CalculatorModal = {
                                                                       атестату
                                                                       (%)
                                           </div>
+                                          <div class="column-wrapper column-preparatory-courses result-curses-column">Середній бал атестату 
+                                          </div>
                                           <div class="column-wrapper column-preparatory-courses">Ваговий
                                                                       коефіцієнт
                                                                       за успішне
@@ -232,6 +244,8 @@ var CalculatorModal = {
                                                                       підготовчих
                                                                       курсів
                                                                       ВНТУ (%)
+                                          </div>
+                                          <div class="column-wrapper column-preparatory-courses result-curses-column">Результат підготовчих курсів
                                           </div>
                                           <div class="column-wrapper column-result">Результат</div>
                                       </div>
@@ -264,8 +278,23 @@ var CalculatorModal = {
                                               <div class="column-wrapper column-certificate">
                                                     <div>{{row.weight_factor_of_certificate}}</div>
                                               </div>
+                                              <div class="column-wrapper column-preparatory-courses result-curses-column">
+                                                  <div>
+                                                 <input type="text" class="point" maxlength="5" placeholder="бал"
+                                                        v-model.number="certificate_point"> 
+                                                  <span style="margin-left:5px;"> = {{+(certificate_point * row.weight_factor_of_certificate).toFixed(2)}}</span>
+                                           
+                                                  </div>
+                                              </div>
                                               <div class="column-wrapper column-preparatory-courses">
                                                     <div>{{row.weight_factor_of_courses}}</div>
+                                              </div>
+                                               <div class="column-wrapper column-preparatory-courses result-curses-column">
+                                                  <div>
+                                                  <input type="text" class="point" maxlength="3" placeholder="бал"
+                                                                 v-model.number="courses_point">
+                                                  <span> = {{final_courses = courses_point * row.weight_factor_of_courses}}</span>
+                                                  </div>
                                               </div>
                                               <div class="column-wrapper column-result">
                                                       <div>
