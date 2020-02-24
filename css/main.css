@@ -365,7 +365,7 @@ footer {
 .calculator-body > .zno-subjects {
 	overflow-y: auto;
 	position: relative;
-	height: 270px;
+	height: 275px;
 }
 .zno-subjects > .subjects {
 	justify-content: center;
