@@ -1,10 +1,11 @@
 var userAgent = navigator.userAgent.toLowerCase();
+
 var Mozila = /firefox/.test(userAgent);
 var Chrome = /chrome/.test(userAgent);
 var Safari = /safari/.test(userAgent);
 var Opera  = /opera/.test(userAgent);
 if((/mozilla/.test(userAgent) && !/firefox/.test(userAgent) && !/chrome/.test(userAgent) && !/safari/.test(userAgent) && !/opera/.test(userAgent)) || /msie/.test(userAgent)){
-    alert('Ваш браузер застарів. Будь ласка оновіть його версію, або використайте інший.');
+    alert('Ваш браузер застарів. Будь ласка обновіть його версію, або використайте інший.');
 }
 
 
@@ -59,6 +60,7 @@ var CalculatorModal = {
           final_certificate: 0,
           final_courses: 0,
           result: 0,
+          error: null,
       }
   },
    watch: {
@@ -73,6 +75,18 @@ var CalculatorModal = {
         },
     },
   methods: {
+  		identifySubjects: function () {
+  			this.merged_columns.forEach((merged_column) => {
+  				if(merged_column.budget_subject == merged_column.non_budgetary_subject) {
+  					let subject_name = merged_column.budget_subject.split('.');
+  					this.subjects.push(subject_name[1] + ' :');
+  				} else {
+  					let first_subject = merged_column.budget_subject.split('.');
+					let second_subject = merged_column.non_budgetary_subject.split('.');
+  					this.subjects.push(first_subject[1] + ' <span class="small-text">(на бюджет)</span> / ' + second_subject[1] + ' <span class="small-text">(на платне)</span> :');
+  				}
+  			});
+  		},
       getSertificateResults: function () {
           let certificate_point = 0;
           let certificate_subjects_length = 0;
@@ -164,11 +178,13 @@ var CalculatorModal = {
                                       <button class="btn btn-certificate" @click="certificate_subjects.pop()">Видалити поле</button>
                                   </div>
                               </div>
-                              <div class="result-certificate">
-                                   <span>Середній бал :</span>
+                              <div class="result-certificate zno-result">
+                                   <span>Середній бал => Середній бал*Ваговий коефіцієнт</span>
+                                   <div>
                                    <input type="text" class="point" maxlength="5" placeholder="бал"
                                           v-model.number="certificate_point"> 
                                     <span style="margin-left:5px;"> = {{+(certificate_point * row.weight_factor_of_certificate).toFixed(2)}}</span>
+                                   </div>
                               </div>
                                   <div class="zno-subjects-title">
                                       <span>Введіть результати ЗНО:</span>
@@ -513,5 +529,7 @@ const app = new Vue({
 			document.cookie = 'coockie=confirmed;expires=' + (new Date).getTime() + (2 * 365 * 24 * 60 * 60 * 1000);
 			this.show_cookie = false;
   		}
+
     }
+
 });
