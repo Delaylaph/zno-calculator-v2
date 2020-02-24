@@ -183,7 +183,7 @@ var CalculatorModal = {
                                    <div>
                                    <input type="text" class="point" maxlength="5" placeholder="бал"
                                           v-model.number="certificate_point"> 
-                                    <span style="margin-left:5px;"> = {{+(certificate_point * row.weight_factor_of_certificate).toFixed(2)}}</span>
+                                    <span style="margin-left:5px;"> => {{+(certificate_point * row.weight_factor_of_certificate).toFixed(2)}}</span>
                                    </div>
                               </div>
                                   <div class="zno-subjects-title">
@@ -282,10 +282,9 @@ var CalculatorModal = {
                                               </div>
                                               <div class="column-wrapper column-preparatory-courses result-curses-column">
                                                   <div>
-                                                 <input type="text" class="point" maxlength="5" placeholder="бал"
-                                                        v-model.number="certificate_point"> 
-                                                  <span style="margin-left:5px;"> = {{+(certificate_point * row.weight_factor_of_certificate).toFixed(2)}}</span>
-                                           
+                                                 		<input type="text" class="point" maxlength="5" placeholder="бал"
+                                                        	v-model.number="certificate_point"> 
+                                                  		<span style="margin-left:5px;"> = {{+(certificate_point * row.weight_factor_of_certificate).toFixed(2)}}</span>
                                                   </div>
                                               </div>
                                               <div class="column-wrapper column-preparatory-courses">
