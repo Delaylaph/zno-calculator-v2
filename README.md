@@ -29,6 +29,14 @@ All table rows are in an array 'table'. A row is an object of type:
   weight_factor_of_courses: "0",
  }
 ```
+You can change the regional coefficient in main.js:
+```javascript
+data () {
+      return {
+        regional_coefficient: 1.02,
+      }
+}
+```
 You can retrieve the table from your server as needed. It should be in json format. For example:
 ```javascript
 const axios = require('axios');
