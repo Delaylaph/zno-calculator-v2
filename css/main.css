@@ -109,8 +109,8 @@ footer {
 	text-decoration: none;
     outline: none;
     display: inline-block;
-    width: 120px;
-    min-width: 120px;
+    width: 125px;
+    min-width: 125px;
     height: 35px;
     border-radius: 45px;
     font-family: 'Montserrat', sans-serif;
@@ -539,11 +539,11 @@ footer {
 	font-size: 1.2rem;
 }
 .zno-subjects > .header-table {
-	width: 1550px;
+	width: 1555px;
 	padding: 10px 4px 0 4px;
 }
 .zno-subjects > .row-wrapper {
-	width: 1550px;
+	width: 1555px;
 	padding: 10px 4px 0 4px;
 	position: absolute;
 }
@@ -620,12 +620,12 @@ footer {
 	min-width: 100px;
 }
 .zno-subjects > .header-table > .column-result {
-	width: 120px;
-	min-width: 120px;
+	width: 125px;
+	min-width: 125px;
 }
 .zno-subjects > .row-wrapper > .column-result {
-	width: 120px;
-	min-width: 120px;
+	width: 125px;
+	min-width: 125px;
 }
 .zno-results-intable {
 	width: 150px;
@@ -740,7 +740,7 @@ footer {
 		overflow-x: scroll;
 	}
 	.row-wrapper {
-		width: 1100px;
+		width: 1108px;
 		padding: 10px 4px 0 4px;
 	}
 	.header-table {
@@ -776,8 +776,8 @@ footer {
 		min-width: 100px;
 	}
 	.column-result {
-		width: 110px;
-		min-width: 110px;
+		width: 125px;
+		min-width: 125px;
 	}
 	.search {
 		width: 60%;
