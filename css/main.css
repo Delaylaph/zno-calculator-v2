@@ -14,7 +14,7 @@ footer {
 	height: 100px;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
+	justify-content: center;
 	align-items: center;
 	color: #fcf3cf;
 	margin-top: 40px;
@@ -79,6 +79,7 @@ footer {
     left: 0;
     margin-left: 12px;
     margin-top: -7px;
+    margin-bottom: 7px;
     position: absolute;
     background: #000000;
     -webkit-mask-image: url(../svg/search.svg);
@@ -109,6 +110,7 @@ footer {
     outline: none;
     display: inline-block;
     width: 120px;
+    min-width: 120px;
     height: 35px;
     border-radius: 45px;
     font-family: 'Montserrat', sans-serif;
@@ -617,13 +619,13 @@ footer {
 	width: 100px;
 	min-width: 100px;
 }
-.zno-subjects > .header-table > .merged-row-of-items > .column-result {
-	width: 110px;
-	min-width: 110px;
+.zno-subjects > .header-table > .column-result {
+	width: 120px;
+	min-width: 120px;
 }
-.zno-subjects > .row-wrapper > .merged-row-of-items > .column-result {
-	width: 110px;
-	min-width: 110px;
+.zno-subjects > .row-wrapper > .column-result {
+	width: 120px;
+	min-width: 120px;
 }
 .zno-results-intable {
 	width: 150px;
