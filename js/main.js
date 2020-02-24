@@ -1,11 +1,10 @@
 var userAgent = navigator.userAgent.toLowerCase();
-
 var Mozila = /firefox/.test(userAgent);
 var Chrome = /chrome/.test(userAgent);
 var Safari = /safari/.test(userAgent);
 var Opera  = /opera/.test(userAgent);
 if((/mozilla/.test(userAgent) && !/firefox/.test(userAgent) && !/chrome/.test(userAgent) && !/safari/.test(userAgent) && !/opera/.test(userAgent)) || /msie/.test(userAgent)){
-    alert('Ваш браузер застарів. Будь ласка обновіть його версію, або використайте інший.');
+    alert('Ваш браузер застарів. Будь ласка оновіть його версію, або використайте інший.');
 }
 
 
@@ -60,7 +59,6 @@ var CalculatorModal = {
           final_certificate: 0,
           final_courses: 0,
           result: 0,
-          error: null,
       }
   },
    watch: {
@@ -75,18 +73,6 @@ var CalculatorModal = {
         },
     },
   methods: {
-  		identifySubjects: function () {
-  			this.merged_columns.forEach((merged_column) => {
-  				if(merged_column.budget_subject == merged_column.non_budgetary_subject) {
-  					let subject_name = merged_column.budget_subject.split('.');
-  					this.subjects.push(subject_name[1] + ' :');
-  				} else {
-  					let first_subject = merged_column.budget_subject.split('.');
-					let second_subject = merged_column.non_budgetary_subject.split('.');
-  					this.subjects.push(first_subject[1] + ' <span class="small-text">(на бюджет)</span> / ' + second_subject[1] + ' <span class="small-text">(на платне)</span> :');
-  				}
-  			});
-  		},
       getSertificateResults: function () {
           let certificate_point = 0;
           let certificate_subjects_length = 0;
@@ -158,7 +144,7 @@ var CalculatorModal = {
                   <div class="modal-wrapper">
                       <div class="modal-container modal-calculator">
                           <div class="calculator-head">
-                              Калькулятор абітурієнта
+                              Калькулятор абітурієнта ВНТУ
                           </div>
                           <div class="scroll-calculator">
                             <div class="calculator-body">
@@ -527,7 +513,5 @@ const app = new Vue({
 			document.cookie = 'coockie=confirmed;expires=' + (new Date).getTime() + (2 * 365 * 24 * 60 * 60 * 1000);
 			this.show_cookie = false;
   		}
-
     }
-
 });
