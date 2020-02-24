@@ -631,6 +631,7 @@ footer {
 	width: 150px;
 	min-width: 150px;
 }
+
 /*  ----------------------------------------------------
 7. MODAL WINDOW
 -------------------------------------------------------- */
@@ -745,7 +746,7 @@ footer {
 	}
 	.header-table {
 		width: 1108px;
-    		padding: 10px 4px 0 4px;
+    	padding: 10px 4px 0 4px;
 	}
 	.merged-row-of-items {
 		width: 620px;
@@ -785,7 +786,13 @@ footer {
 }
 
 @media screen and (max-width: 650px) {
-
+	.zno-result {
+		flex-direction: column;
+		text-align: center;
+	}
+	.zno-result > span {
+		margin-bottom: 5px;
+	}
 	.block {
 		margin: 10px 20px;
 	}
