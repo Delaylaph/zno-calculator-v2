@@ -75,18 +75,6 @@ var CalculatorModal = {
         },
     },
   methods: {
-  		identifySubjects: function () {
-  			this.merged_columns.forEach((merged_column) => {
-  				if(merged_column.budget_subject == merged_column.non_budgetary_subject) {
-  					let subject_name = merged_column.budget_subject.split('.');
-  					this.subjects.push(subject_name[1] + ' :');
-  				} else {
-  					let first_subject = merged_column.budget_subject.split('.');
-					let second_subject = merged_column.non_budgetary_subject.split('.');
-  					this.subjects.push(first_subject[1] + ' <span class="small-text">(на бюджет)</span> / ' + second_subject[1] + ' <span class="small-text">(на платне)</span> :');
-  				}
-  			});
-  		},
       getSertificateResults: function () {
           let certificate_point = 0;
           let certificate_subjects_length = 0;
@@ -269,6 +257,7 @@ var CalculatorModal = {
                                                       {{merged_column.weight_factor_of_subjects}}
                                                   </div>
                                                   <div class="column-wrapper zno-results-intable">
+                                                  	
                                                       <div>
                                                           <input type="text" class="point" maxlength="3" placeholder="бал"
                                                                  v-model.number="zno_results[key]">
